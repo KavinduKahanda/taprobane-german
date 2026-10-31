@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://kavindukahanda.github.io/deutsch-german-from-zero/sitemap.xml
+Sitemap: https://kavindukahanda.github.io/taprobane-german/sitemap.xml

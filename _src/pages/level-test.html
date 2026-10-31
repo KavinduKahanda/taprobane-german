@@ -3,7 +3,7 @@ description: Free 3-minute German placement test: 12 questions from A1 to B2. Ge
 image: cover-b1.jpg
 nav: level
 ---
-<section class="hero" style="padding:56px 0 40px"><div class="wrap" style="display:block"><span class="kicker">Free · 3 minutes · instant result</span>
+<section class="hero" style="padding:56px 0 40px"><div class="wrap" style="display:block"><span class="eyebrow">Free · 3 minutes · instant result</span>
 <h1>German level test</h1><p class="lead">12 short questions from A1 to B2. No sign-up. Your answers stay in your browser.</p></div></section>
 <section class="block"><div class="wrap">
 <div class="quiz" id="quiz">
@@ -48,7 +48,7 @@ function finish(){quiz.style.display='none';bar.style.width='100%';
   else{var m={A1:['Deutsch A1: German from Zero','a1.html'],A2:['Deutsch A2: German from Zero','a2.html'],B1:['Deutsch B1: German from Zero','b1.html'],B2:['Deutsch B2: German from Zero','b2.html']};
        rec={t:m[lvl][0],u:m[lvl][1],b:'See the book'}}
   var rev=wrong.map(function(i){var q=Q[i];return '<li><b>'+q[0]+'</b> → '+q[1][q[2]]+'</li>'}).join('');
-  res.innerHTML='<span class="kicker dark">Your result</span><h2>About '+lvl+' · '+score+'/12 correct</h2>'+
+  res.innerHTML='<span class="eyebrow dark">Your result</span><h2>About '+lvl+' · '+score+'/12 correct</h2>'+
    '<p><b>Recommended start:</b> '+rec.t+'</p><a class="btn navy" href="'+rec.u+'">'+rec.b+'</a><a class="btn" href="level-test.html">Retake the test</a>'+
    (rev?'<details style="margin-top:18px"><summary>Correct answers to the questions you missed ('+wrong.length+')</summary><ul>'+rev+'</ul></details>':'<p style="margin-top:14px">Perfect score — you may be ready for an exam at B2.</p>');
   res.classList.add('on');res.scrollIntoView({behavior:'smooth'})}
