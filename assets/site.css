@@ -49,7 +49,7 @@ section.block{padding:72px 0}section.alt{background:var(--paper)}section.mint{ba
 .card h3{margin:.2em 0}.card p{color:var(--muted);font-size:.95rem;margin:.3em 0 .8em}
 .pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:#f1e7d2;color:#7a5a17}
 .pill.teal{background:#d8ecea;color:var(--teal)}.pill.coral{background:var(--coral);color:#fff}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:28px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
 .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px;text-align:center}
 .stat b{display:block;font-family:var(--serif);font-size:1.8rem;color:var(--gold2)}.stat span{font-size:.85rem;color:#cfd9e5}
 .stats.light .stat{background:var(--paper);border-color:var(--line)}.stats.light .stat b{color:var(--navy)}.stats.light .stat span{color:var(--muted)}
