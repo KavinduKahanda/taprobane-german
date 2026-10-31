@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free German Level Test (A1–B2) — Which Book Should I Start With?</title><meta name="description" content="Free 3-minute German placement test: 12 questions from A1 to B2. Get an instant level estimate and the right book to start with, including German for nurses.">
+<link rel="canonical" href="https://kavindukahanda.github.io/deutsch-german-from-zero/level-test.html"><meta property="og:title" content="Free German Level Test (A1–B2) — Which Book Should I Start With?"><meta property="og:description" content="Free 3-minute German placement test: 12 questions from A1 to B2. Get an instant level estimate and the right book to start with, including German for nurses.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://kavindukahanda.github.io/deutsch-german-from-zero/level-test.html"><meta property="og:image" content="https://kavindukahanda.github.io/deutsch-german-from-zero/cover-b1.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230f2a47' stroke='%23c9963a' stroke-width='6'/%3E%3Ctext x='50' y='66' font-size='50' text-anchor='middle' fill='%23e6c07a' font-family='Georgia'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css"></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+<a class="brand" href="./"><span class="brand-mark">D</span>Deutsch · Taprobane Holdings</a>
+<button class="menu-btn" aria-expanded="false" aria-label="Menu">☰</button>
+<nav class="nav"><a href="./">Home</a><a href="./#books">German from Zero</a><a href="pflege.html">For Nurses</a><a href="level-test.html" aria-current=page>Level test</a><a href="bonus.html">Free resources</a><a class="cta" href="./#books">Shop books</a>
+<label class="store">Store <select aria-label="Choose your Amazon store"><option value="com">Amazon.com</option><option value="de">Amazon.de</option><option value="co.uk">Amazon.co.uk</option><option value="in">Amazon.in</option><option value="ca">Amazon.ca</option><option value="com.au">Amazon.com.au</option><option value="fr">Amazon.fr</option><option value="it">Amazon.it</option><option value="es">Amazon.es</option><option value="nl">Amazon.nl</option></select></label></nav>
+</div></header>
+<main id="main"><section class="hero" style="padding:56px 0 40px"><div class="wrap" style="display:block"><span class="kicker">Free · 3 minutes · instant result</span>
+<h1>German level test</h1><p class="lead">12 short questions from A1 to B2. No sign-up. Your answers stay in your browser.</p></div></section>
+<section class="block"><div class="wrap">
+<div class="quiz" id="quiz">
+<div class="bar"><i id="bar"></i></div>
+<div class="q on" data-step="0"><h3>First: do you work (or plan to work) in nursing or care?</h3>
+<div class="opts"><button data-care="1">Yes — nurse, nursing trainee or caregiver</button><button data-care="0">No — I'm learning German for life, study or work</button></div></div>
+</div>
+<div class="quiz result" id="result" aria-live="polite"></div>
+<p class="note" style="margin-top:16px">This is a quick estimate, not an official placement test. Each book also starts with its own 3-minute check.</p>
+</div></section>
+<script>
+(function(){
+var Q=[
+["„Wie heißen Sie?“ — the best answer is:",["Ich heiße Anna.","Ich bin gut.","Ich wohne in Berlin."],0,"A1"],
+["___ Tisch ist neu.",["Der","Die","Das"],0,"A1"],
+["Ich ___ aus Indien.",["komme","kommst","kommt"],0,"A1"],
+["Gestern ___ ich ins Kino gegangen.",["habe","bin","war"],1,"A2"],
+["Ich gebe ___ Frau das Buch.",["die","der","den"],1,"A2"],
+["Ich bleibe zu Hause, ___ ich krank bin.",["weil","denn","deshalb"],0,"A2"],
+["Das Essen ___ um 12 Uhr serviert.",["wird","ist","hat"],0,"B1"],
+["Das ist der Mann, ___ ich gestern geholfen habe.",["den","dem","der"],1,"B1"],
+["Wenn ich mehr Zeit ___, würde ich dich besuchen.",["habe","hätte","hatte"],1,"B1"],
+["Nachdem er angekommen war … = Nach ___ Ankunft …",["seiner","seinem","seine"],0,"B2"],
+["___ er sich beeilt hatte, kam er zu spät.",["Obwohl","Weil","Damit"],0,"B2"],
+["der gestern ___ Patient (= the patient who was admitted yesterday)",["aufgenommene","aufnehmende","aufgenommen"],0,"B2"]];
+var quiz=document.getElementById('quiz'),bar=document.getElementById('bar'),res=document.getElementById('result');
+var care=null,step=0,score=0,wrong=[];
+Q.forEach(function(q,i){var d=document.createElement('div');d.className='q';d.dataset.step=i+1;
+  d.innerHTML='<p class="note">Question '+(i+1)+' of 12 · '+q[3]+'</p><h3>'+q[0]+'</h3><div class="opts">'+q[1].map(function(o,j){return '<button data-a="'+j+'">'+o+'</button>'}).join('')+'<button data-a="-1" style="color:#5b6674">I don\'t know</button></div>';
+  quiz.appendChild(d)});
+function show(n){quiz.querySelectorAll('.q').forEach(function(e){e.classList.toggle('on',+e.dataset.step===n)});bar.style.width=(n/13*100)+'%'}
+quiz.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.care!=null){care=b.dataset.care==='1';step=1;show(1);return}
+  var q=Q[step-1];if(+b.dataset.a===q[2])score++;else wrong.push(step-1);
+  step++;if(step<=12)show(step);else finish()});
+function finish(){quiz.style.display='none';bar.style.width='100%';
+  var lvl=score<=3?'A1':score<=6?'A2':score<=9?'B1':'B2';
+  var rec;
+  if(care){rec=score<=5?{t:'Build general German first: A2, then Band 1 · B1 Pflege',u:'a2.html',b:'See Deutsch A2'}:
+                score<=9?{t:'Band 1 · B1 Pflege — ward communication & patient care',u:'pflege.html#b1',b:'See B1 Pflege'}:
+                         {t:'Band 2 · B2 Pflege — documentation & difficult conversations',u:'pflege.html#b2',b:'See B2 Pflege'}}
+  else{var m={A1:['Deutsch A1: German from Zero','a1.html'],A2:['Deutsch A2: German from Zero','a2.html'],B1:['Deutsch B1: German from Zero','b1.html'],B2:['Deutsch B2: German from Zero','b2.html']};
+       rec={t:m[lvl][0],u:m[lvl][1],b:'See the book'}}
+  var rev=wrong.map(function(i){var q=Q[i];return '<li><b>'+q[0]+'</b> → '+q[1][q[2]]+'</li>'}).join('');
+  res.innerHTML='<span class="kicker dark">Your result</span><h2>About '+lvl+' · '+score+'/12 correct</h2>'+
+   '<p><b>Recommended start:</b> '+rec.t+'</p><a class="btn navy" href="'+rec.u+'">'+rec.b+'</a><a class="btn" href="level-test.html">Retake the test</a>'+
+   (rev?'<details style="margin-top:18px"><summary>Correct answers to the questions you missed ('+wrong.length+')</summary><ul>'+rev+'</ul></details>':'<p style="margin-top:14px">Perfect score — you may be ready for an exam at B2.</p>');
+  res.classList.add('on');res.scrollIntoView({behavior:'smooth'})}
+})();
+</script>
+</main>
+<footer class="site-footer"><div class="wrap"><div class="cols">
+<div><h4>Taprobane Holdings</h4><p>Clear, structured self-study German courses for English speakers: from your first word to B2, and the German you need on the ward.</p>
+<p>Questions or corrections? <a style="display:inline" href="mailto:kavindukahanda@outlook.com">kavindukahanda@outlook.com</a></p></div>
+<div><h4>German from Zero</h4><a href="a1.html">A1 Beginner</a><a href="a2.html">A2 Elementary</a><a href="b1.html">B1 Intermediate</a><a href="b2.html">B2 Upper intermediate</a></div>
+<div><h4>For Nurses</h4><a href="pflege.html#b1">Band 1 · B1 Pflege</a><a href="pflege.html#b2">Band 2 · B2 Pflege</a><a href="pflege.html#b3">Band 3 · Exam Trainer</a></div>
+<div><h4>Help</h4><a href="level-test.html">Find your level</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="legal.html">Legal &amp; privacy</a></div>
+</div><div class="legal">© <span id="year">2026</span> Taprobane Holdings. Independent publisher; not affiliated with telc gGmbH, the Goethe-Institut, ÖSD or any exam provider. Language learning only — no medical, legal or immigration advice. Amazon and Kindle are trademarks of Amazon.com, Inc.</div>
+</div></footer>
+<script src="assets/site.js" defer></script></body></html>

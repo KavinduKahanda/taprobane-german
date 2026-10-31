@@ -1,0 +1,56 @@
+title: Free German Level Test (A1–B2) — Which Book Should I Start With?
+description: Free 3-minute German placement test: 12 questions from A1 to B2. Get an instant level estimate and the right book to start with, including German for nurses.
+image: cover-b1.jpg
+nav: level
+---
+<section class="hero" style="padding:56px 0 40px"><div class="wrap" style="display:block"><span class="kicker">Free · 3 minutes · instant result</span>
+<h1>German level test</h1><p class="lead">12 short questions from A1 to B2. No sign-up. Your answers stay in your browser.</p></div></section>
+<section class="block"><div class="wrap">
+<div class="quiz" id="quiz">
+<div class="bar"><i id="bar"></i></div>
+<div class="q on" data-step="0"><h3>First: do you work (or plan to work) in nursing or care?</h3>
+<div class="opts"><button data-care="1">Yes — nurse, nursing trainee or caregiver</button><button data-care="0">No — I'm learning German for life, study or work</button></div></div>
+</div>
+<div class="quiz result" id="result" aria-live="polite"></div>
+<p class="note" style="margin-top:16px">This is a quick estimate, not an official placement test. Each book also starts with its own 3-minute check.</p>
+</div></section>
+<script>
+(function(){
+var Q=[
+["„Wie heißen Sie?“ — the best answer is:",["Ich heiße Anna.","Ich bin gut.","Ich wohne in Berlin."],0,"A1"],
+["___ Tisch ist neu.",["Der","Die","Das"],0,"A1"],
+["Ich ___ aus Indien.",["komme","kommst","kommt"],0,"A1"],
+["Gestern ___ ich ins Kino gegangen.",["habe","bin","war"],1,"A2"],
+["Ich gebe ___ Frau das Buch.",["die","der","den"],1,"A2"],
+["Ich bleibe zu Hause, ___ ich krank bin.",["weil","denn","deshalb"],0,"A2"],
+["Das Essen ___ um 12 Uhr serviert.",["wird","ist","hat"],0,"B1"],
+["Das ist der Mann, ___ ich gestern geholfen habe.",["den","dem","der"],1,"B1"],
+["Wenn ich mehr Zeit ___, würde ich dich besuchen.",["habe","hätte","hatte"],1,"B1"],
+["Nachdem er angekommen war … = Nach ___ Ankunft …",["seiner","seinem","seine"],0,"B2"],
+["___ er sich beeilt hatte, kam er zu spät.",["Obwohl","Weil","Damit"],0,"B2"],
+["der gestern ___ Patient (= the patient who was admitted yesterday)",["aufgenommene","aufnehmende","aufgenommen"],0,"B2"]];
+var quiz=document.getElementById('quiz'),bar=document.getElementById('bar'),res=document.getElementById('result');
+var care=null,step=0,score=0,wrong=[];
+Q.forEach(function(q,i){var d=document.createElement('div');d.className='q';d.dataset.step=i+1;
+  d.innerHTML='<p class="note">Question '+(i+1)+' of 12 · '+q[3]+'</p><h3>'+q[0]+'</h3><div class="opts">'+q[1].map(function(o,j){return '<button data-a="'+j+'">'+o+'</button>'}).join('')+'<button data-a="-1" style="color:#5b6674">I don\'t know</button></div>';
+  quiz.appendChild(d)});
+function show(n){quiz.querySelectorAll('.q').forEach(function(e){e.classList.toggle('on',+e.dataset.step===n)});bar.style.width=(n/13*100)+'%'}
+quiz.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.care!=null){care=b.dataset.care==='1';step=1;show(1);return}
+  var q=Q[step-1];if(+b.dataset.a===q[2])score++;else wrong.push(step-1);
+  step++;if(step<=12)show(step);else finish()});
+function finish(){quiz.style.display='none';bar.style.width='100%';
+  var lvl=score<=3?'A1':score<=6?'A2':score<=9?'B1':'B2';
+  var rec;
+  if(care){rec=score<=5?{t:'Build general German first: A2, then Band 1 · B1 Pflege',u:'a2.html',b:'See Deutsch A2'}:
+                score<=9?{t:'Band 1 · B1 Pflege — ward communication & patient care',u:'pflege.html#b1',b:'See B1 Pflege'}:
+                         {t:'Band 2 · B2 Pflege — documentation & difficult conversations',u:'pflege.html#b2',b:'See B2 Pflege'}}
+  else{var m={A1:['Deutsch A1: German from Zero','a1.html'],A2:['Deutsch A2: German from Zero','a2.html'],B1:['Deutsch B1: German from Zero','b1.html'],B2:['Deutsch B2: German from Zero','b2.html']};
+       rec={t:m[lvl][0],u:m[lvl][1],b:'See the book'}}
+  var rev=wrong.map(function(i){var q=Q[i];return '<li><b>'+q[0]+'</b> → '+q[1][q[2]]+'</li>'}).join('');
+  res.innerHTML='<span class="kicker dark">Your result</span><h2>About '+lvl+' · '+score+'/12 correct</h2>'+
+   '<p><b>Recommended start:</b> '+rec.t+'</p><a class="btn navy" href="'+rec.u+'">'+rec.b+'</a><a class="btn" href="level-test.html">Retake the test</a>'+
+   (rev?'<details style="margin-top:18px"><summary>Correct answers to the questions you missed ('+wrong.length+')</summary><ul>'+rev+'</ul></details>':'<p style="margin-top:14px">Perfect score — you may be ready for an exam at B2.</p>');
+  res.classList.add('on');res.scrollIntoView({behavior:'smooth'})}
+})();
+</script>

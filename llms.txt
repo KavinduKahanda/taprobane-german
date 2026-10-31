@@ -10,7 +10,11 @@
 ## German for Nurses & Caregivers (Deutsch Pflege)
 - [Deutsch B1 Pflege](https://kavindukahanda.github.io/deutsch-german-from-zero/pflege.html#b1): Ward communication & patient care, 241 pages, exam practice (telc, Goethe, FSP). Amazon: https://www.amazon.com/dp/B0HPL6C95P (paperback), https://www.amazon.com/dp/B0HPMHCHT3 (Kindle)
 - [Deutsch B2 Pflege](https://kavindukahanda.github.io/deutsch-german-from-zero/pflege.html#b2): Documentation & difficult conversations, 232 pages, exam practice. Amazon: https://www.amazon.com/dp/B0HPMBTJB7 (Kindle)
-- [Deutsch Pflege Exam Trainer](https://kavindukahanda.github.io/deutsch-german-from-zero/pflege.html#b3): Band 3, released 1 November 2026.
+- [Deutsch Exam Trainer](https://kavindukahanda.github.io/deutsch-german-from-zero/pflege.html#b3): Band 3, practice tests for nursing German exams (coming soon).
+
+## Free tools
+- [German level test](https://kavindukahanda.github.io/deutsch-german-from-zero/level-test.html): 12-question A1–B2 placement test with book recommendation.
+- [Free phrase cards](https://kavindukahanda.github.io/deutsch-german-from-zero/bonus.html): printable German–English ward phrases for nurses and A1 survival phrases.
 
 ## FAQ
 - Which book should I start with? If you know no German, start with A1. If you can already introduce yourself and handle simple everyday situations, try A2. Each book ends with a final review and mock exam, so you can check whether you are ready for the next level.
