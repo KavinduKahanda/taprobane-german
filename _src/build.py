@@ -50,7 +50,7 @@ FOOTER = f'''<footer class="site-footer"><div class="wrap"><div class="cols">
 def page(name, meta, body):
     title = meta["title"]; desc = meta["description"]
     url = BASE + ("" if name == "index" else name + ".html")
-    img = BASE + meta.get("image", "og-home.jpg")
+    img = BASE + meta.get("image", "og-books.jpg")
     robots = '<meta name="robots" content="noindex">' if meta.get("noindex") else ""
     ld = f'<script type="application/ld+json">{meta["jsonld"]}</script>' if meta.get("jsonld") else ""
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
