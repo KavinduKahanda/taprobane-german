@@ -156,3 +156,6 @@ summary:after{content:"+";color:var(--gold);font-size:1.3rem;line-height:1}detai
 @media(max-width:760px){.site-footer .cols{grid-template-columns:1fr 1fr}.site-footer .cols>div:first-child{grid-column:1/-1}}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}.reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
+/* promo bar */
+.promo{background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--deep);font:600 .92rem/1.4 var(--sans)}.promo .wrap{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:9px 22px;text-align:center}.promo a{color:var(--deep);font-weight:700;white-space:nowrap}.promo a:hover{color:var(--navy)}.promo-dot{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(212,87,59,.25);animation:pd 1.6s infinite}@keyframes pd{50%{box-shadow:0 0 0 8px rgba(212,87,59,0)}}
