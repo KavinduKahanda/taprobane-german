@@ -28,6 +28,7 @@ def header(active):
         f'<a href="{h}"{" aria-current=page" if k == active else ""}>{t}</a>' for k, h, t in NAV)
     opts = "".join(f'<option value="{v}">{t}</option>' for v, t in STORES)
     return f'''<a class="skip" href="#main">Skip to content</a>
+<div class="promo" id="promo" hidden></div>
 <header class="site-header"><div class="wrap">
 <a class="brand" href="./"><span class="brand-mark">T</span><span><b>Taprobane German</b><small>Self-study German</small></span></a>
 <button class="menu-btn" aria-expanded="false" aria-label="Menu">☰</button>
