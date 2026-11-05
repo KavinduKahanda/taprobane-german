@@ -34,5 +34,14 @@
   function apply(s){links(s);promo(s)}
   document.querySelectorAll('.store select').forEach(function(sel){sel.addEventListener('change',function(){cur=sel.value;try{localStorage.setItem('store',cur)}catch(e){}apply(cur)})});
   apply(cur);
+  // Inquiry form (only present once a form service endpoint is set in _src/build.py)
+  var f=document.getElementById('inquiry');
+  if(f){f.addEventListener('submit',function(e){e.preventDefault();var st=f.querySelector('.form-status'),b=f.querySelector('button');
+    if(!f.checkValidity()){st.className='form-status err';st.textContent='Please choose a topic, add your e-mail and write a message.';f.reportValidity();return}
+    b.disabled=true;st.className='form-status';st.textContent='Sending…';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
+      if(!r.ok)throw 0;f.reset();st.className='form-status ok';st.textContent='Thank you — your message has been sent. We will reply by e-mail.'})
+    .catch(function(){st.className='form-status err';st.textContent='Sorry, sending failed. Please message us on Instagram instead.'})
+    .then(function(){b.disabled=false})})}
   var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
 })();

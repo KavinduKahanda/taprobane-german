@@ -22,7 +22,10 @@ import datetime, html, json, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
 BASE = "https://kavindukahanda.github.io/taprobane-german/"
-EMAIL = "kavindukahanda@outlook.com"
+# Inquiry form: paste the free form service's endpoint URL here (e.g. Formspree / Web3Forms).
+# While it is empty the contact page shows only the Instagram panel, no broken form.
+FORM_ENDPOINT = ""
+FORM_FIELDS = {}  # extra hidden fields a service may need, e.g. {"access_key": "..."}
 INSTAGRAM = "https://www.instagram.com/deutschvonzero/"
 SITE = "German from Zero"
 PUB = "Taprobane Holdings"
@@ -36,7 +39,7 @@ esc = html.escape
 
 NAV = [("books", "./#books", "Books"), ("pflege", "pflege.html", "For nurses"),
        ("level", "level-test.html", "Level test"), ("bonus", "bonus.html", "Free resources"),
-       ("about", "about.html", "About")]
+       ("about", "about.html", "About"), ("contact", "contact.html", "Contact")]
 STORES = [("com", "Amazon.com"), ("de", "Amazon.de"), ("co.uk", "Amazon.co.uk"), ("in", "Amazon.in"),
           ("ca", "Amazon.ca"), ("com.au", "Amazon.com.au"), ("fr", "Amazon.fr"), ("it", "Amazon.it"),
           ("es", "Amazon.es"), ("nl", "Amazon.nl")]
@@ -158,7 +161,7 @@ def book_ld(b):
 
 
 def org_ld():
-    return {"@type": "Organization", "@id": BASE + "#publisher", "name": PUB, "url": BASE, "email": EMAIL,
+    return {"@type": "Organization", "@id": BASE + "#publisher", "name": PUB, "url": BASE,
             "brand": SITE, "sameAs": [INSTAGRAM]}
 
 
@@ -212,16 +215,33 @@ def footer():
     return f'''<footer class="site-footer"><div class="wrap"><div class="cols">
 <div>{brand("by " + PUB)}<p>Clear, structured self-study German for English speakers — from your first word to B2, and the German you need on the ward.</p>
 <p><a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener">Follow @deutschvonzero on Instagram</a> — a free German tip every few days.</p>
-<p>Questions or corrections? <a class="inline" href="mailto:{EMAIL}">{EMAIL}</a></p></div>
+<p>Questions or corrections? <a class="inline" href="contact.html">Get in touch →</a></p></div>
 <div><h2 class="fh">German from Zero</h2>{zero}</div>
 <div><h2 class="fh">German for Nurses</h2>{pfl}</div>
-<div><h2 class="fh">Help</h2><a href="level-test.html">Find your level</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="about.html">About the publisher</a><a href="legal.html">Legal &amp; privacy</a></div>
+<div><h2 class="fh">Help</h2><a href="level-test.html">Find your level</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="about.html">About the publisher</a><a href="contact.html">Contact</a><a href="legal.html">Legal &amp; privacy</a></div>
 </div><div class="legal">© <span id="year">2026</span> {PUB}. Independent publisher; not affiliated with telc gGmbH, the Goethe-Institut, ÖSD or any exam provider. Language learning only — no medical, legal or immigration advice. Amazon and Kindle are trademarks of Amazon.com, Inc.</div>
 </div></footer>
 <script src="assets/deals.js"></script><script src="assets/site.js" defer></script>'''
 
 
+def inquiry():
+    if not FORM_ENDPOINT:
+        return ""
+    hidden = "".join(f'<input type="hidden" name="{esc(k)}" value="{esc(v)}">' for k, v in FORM_FIELDS.items())
+    return f'''<div class="cpanel form-panel"><span class="eyebrow dark">Inquiry</span><h2>Send an inquiry</h2>
+<form id="inquiry" action="{esc(FORM_ENDPOINT)}" method="POST" novalidate>{hidden}
+<input type="hidden" name="subject" value="German from Zero – website inquiry">
+<label>Topic<select name="topic" required><option value="">Choose…</option><option>Question about a book</option><option>I found a mistake</option><option>Which level is right for me?</option><option>Teacher / school / bulk order</option><option>Something else</option></select></label>
+<label>Your name <span class="opt">(optional)</span><input name="name" autocomplete="name" maxlength="80"></label>
+<label>Your e-mail <span class="opt">(so we can reply)</span><input name="email" type="email" autocomplete="email" required maxlength="120"></label>
+<label>Message<textarea name="message" rows="5" required maxlength="3000"></textarea></label>
+<input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="note">We use your e-mail only to answer this message. See <a href="legal.html">privacy</a>.</p>
+<button class="btn navy" type="submit">Send inquiry</button><p class="form-status" role="status" aria-live="polite"></p></form></div>'''
+
+
 def tokens(body):
+    body = body.replace("<!--@inquiry-->", inquiry())
     body = re.sub(r"<!--@include ([\w-]+)-->", lambda m: (SRC / "partials" / f"{m.group(1)}.html").read_text(encoding="utf-8"), body)
     body = re.sub(r"<!--@cards (\w+)-->", lambda m: cards(m.group(1)), body)
     body = re.sub(r"<!--@rows (\w+)-->", lambda m: rows(m.group(1)), body)
