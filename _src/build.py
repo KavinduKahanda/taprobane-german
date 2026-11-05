@@ -241,7 +241,7 @@ def inquiry():
 
 
 def tokens(body):
-    body = body.replace("<!--@inquiry-->", inquiry())
+    body = body.replace("<!--@inquiry-->", inquiry()).replace("<!--@logo-->", logo())
     body = re.sub(r"<!--@include ([\w-]+)-->", lambda m: (SRC / "partials" / f"{m.group(1)}.html").read_text(encoding="utf-8"), body)
     body = re.sub(r"<!--@cards (\w+)-->", lambda m: cards(m.group(1)), body)
     body = re.sub(r"<!--@rows (\w+)-->", lambda m: rows(m.group(1)), body)

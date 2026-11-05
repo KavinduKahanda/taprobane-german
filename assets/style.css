@@ -197,3 +197,14 @@ summary:after{content:"+";color:var(--gold);font-size:1.3rem;line-height:1}detai
 .form-panel input:focus,.form-panel select:focus,.form-panel textarea:focus{outline:3px solid var(--gold2);outline-offset:1px;border-color:var(--navy)}
 .opt{font-weight:400;color:var(--muted)}.hp{position:absolute;left:-9999px}
 .form-status{margin:12px 0 0;font-weight:600}.form-status.ok{color:var(--teal)}.form-status.err{color:#b3402a}
+/* Instagram-style profile card */
+.ig-panel{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(160deg,#2a1240 0%,#0d2440 55%,#081a2e 100%)}
+.ig-panel:before{content:"";position:absolute;z-index:-1;width:340px;height:340px;right:-120px;top:-140px;border-radius:50%;background:radial-gradient(circle,rgba(253,29,29,.35),rgba(131,58,180,.25) 45%,transparent 70%)}
+.ig-panel:after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#833ab4,#fd1d1d 55%,#fcb045)}
+.ig-head{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.ig-ring{width:76px;height:76px;border-radius:50%;padding:3px;background:conic-gradient(from 200deg,#fcb045,#fd1d1d,#c13584,#833ab4,#fcb045);flex:none}
+.ig-avatar{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:var(--cream);border:3px solid #1b1a3a;color:var(--navy)}
+.ig-avatar .logo{width:48px;height:32px}
+.ig-handle{display:block;color:#fff;font-size:1.15rem}.ig-name{font-size:.88rem;color:#c9c3dd}
+.ig-btn{background:linear-gradient(100deg,#833ab4,#fd1d1d 60%,#fcb045);color:#fff;display:inline-flex;align-items:center;gap:9px;box-shadow:0 12px 26px -12px rgba(253,29,29,.7)}
+.ig-btn:hover{color:#fff;filter:brightness(1.08)}.ig-btn svg{width:19px;height:19px}
