@@ -1,0 +1,28 @@
+title: Free German Lessons & Reels — Phrases, Grammar, Life in Germany, Nurses
+description: 20 free visual German lessons and short reels for English speakers: first-week phrases, der/die/das, word order, Anmeldung, the doctor, Deutsche Bahn, du vs Sie and German for nurses. No sign-up.
+image: og-home.jpg
+nav: learn
+ld: learn
+---
+<section class="hero"><div class="wrap" style="display:block"><span class="eyebrow">Free · no sign-up · new every week</span>
+<h1>Free German <em>lessons</em> &amp; reels</h1><p class="lead">Short visual lessons for English speakers: phrases for your first weeks in Germany, grammar that actually sticks, and German for the ward. Tap a lesson to swipe through it.</p>
+<a class="btn" href="#lessons">Browse lessons</a><a class="btn ghost" href="#reels">Watch reels</a><a class="btn ghost" href="https://www.instagram.com/deutschvonzero/" target="_blank" rel="noopener">Follow @deutschvonzero</a></div></section>
+
+<section class="block" id="lessons"><div class="wrap"><div class="head"><span class="eyebrow dark">20 lessons</span><h2>Learn one thing at a time</h2><p>Each lesson takes about a minute. Say the German out loud, then check the English.</p></div>
+<!--@lessons--></div></section>
+
+<section class="block alt" id="reels"><div class="wrap"><div class="head"><span class="eyebrow dark">Reels · 20–30 seconds</span><h2>Watch &amp; <em>repeat</em></h2><p>Silent, subtitle-style reels: read, pause, say it yourself.</p></div>
+<!--@reels-->
+<div class="band" style="margin-top:36px"><div><h2>Want the full course?</h2><p>Every lesson comes from our self-study books — A1 to B2, plus German for nurses.</p></div><a class="btn" href="./#books">See the books →</a></div></div></section>
+
+<dialog class="lx-d" id="lxd" aria-label="Lesson"><div class="lx-dh"><b id="lxdt"></b><button type="button" class="lx-x" aria-label="Close">✕</button></div>
+<div class="lx-track" id="lxtrack"></div><div class="lx-df"><span id="lxdn"></span><a class="btn sm" id="lxdb" href="#">Learn more</a></div></dialog>
+<script>
+(function(){var d=document.getElementById('lxd'),tr=document.getElementById('lxtrack'),n=document.getElementById('lxdn');
+document.querySelectorAll('.lx-f button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.lx-f button').forEach(function(x){x.classList.toggle('on',x===b)});var t=b.dataset.t;document.querySelectorAll('.lx').forEach(function(a){a.hidden=!(t==='all'||a.dataset.t===t)})})});
+document.querySelectorAll('.lx-open').forEach(function(o){o.addEventListener('click',function(){var s=o.dataset.slides.split(' ');tr.innerHTML=s.map(function(u,i){return '<img src="'+u+'" alt="'+o.dataset.title.replace(/"/g,'&quot;')+' — slide '+(i+1)+' of '+s.length+'" width="720" height="900">'}).join('');
+document.getElementById('lxdt').textContent=o.dataset.title;var b=document.getElementById('lxdb');b.href=o.dataset.book;b.textContent='Learn more: '+o.dataset.bookt+' →';
+n.textContent=s.length>1?'Swipe → '+s.length+' slides':'';tr.scrollLeft=0;d.showModal?d.showModal():d.setAttribute('open','')})});
+d.querySelector('.lx-x').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});
+document.querySelectorAll('.rl video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('.rl video').forEach(function(x){if(x!==v)x.pause()})})})})();
+</script>

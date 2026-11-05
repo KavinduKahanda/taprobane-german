@@ -1,0 +1,206 @@
+{
+ "_help": "Free lessons page (learn.html). Images/videos live in media/learn/ (pNN-pin.jpg, pNN-sNN.jpg, rNN.mp4, rNN.jpg). book = id from books.json or null.",
+ "topics": {
+  "a1": "A1 basics",
+  "grammar": "Grammar",
+  "life": "Life in Germany",
+  "nurses": "For nurses",
+  "books": "Choosing a book"
+ },
+ "posts": [
+  {
+   "id": "p01",
+   "topic": "a1",
+   "title": "German Phrases to Know: 8 Beginner Phrases for Your First Week in Germany",
+   "alt": "Flash card with the German phrase 'Wie bitte?' and its English meaning 'Sorry, what?'",
+   "slides": 10,
+   "book": "a1"
+  },
+  {
+   "id": "p02",
+   "topic": "grammar",
+   "title": "German Articles Chart: der, die, das – 3 Rules That Always Work",
+   "alt": "German articles chart showing which word endings take der, die and das",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p03",
+   "topic": "grammar",
+   "title": "German Sentence Structure Rules: Word Order for Beginners (with Examples)",
+   "alt": "Diagram of German sentence structure showing verb position in statements, questions and weil clauses",
+   "slides": 5,
+   "book": "a1"
+  },
+  {
+   "id": "p04",
+   "topic": "life",
+   "title": "Anmeldung Germany: German Phrases for Your Bürgeramt Appointment",
+   "alt": "List of German sentences for the Anmeldung appointment at the Bürgeramt with English translations",
+   "slides": 8,
+   "book": "a1"
+  },
+  {
+   "id": "p05",
+   "topic": "grammar",
+   "title": "Common German Mistakes: How to Say Your Age in German Correctly",
+   "alt": "Wrong vs right: 'Ich bin 25 Jahre' crossed out, 'Ich bin 25 Jahre alt' marked correct",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p06",
+   "topic": "nurses",
+   "title": "German for Nurses: 6 Questions About Pain (Pflegedeutsch B1)",
+   "alt": "German nursing questions about pain, such as 'Wo tut es weh?', with English translations",
+   "slides": 8,
+   "book": "pflege-b1"
+  },
+  {
+   "id": "p07",
+   "topic": "books",
+   "title": "German Levels Explained: Which German Book for Beginners? A1 to B2 Guide",
+   "alt": "Guide to German levels A1, A2, B1 and B2 with matching German from Zero books",
+   "slides": 7,
+   "book": null
+  },
+  {
+   "id": "p08",
+   "topic": "a1",
+   "title": "German Pronunciation Rules: ie vs ei (Easy Trick for Beginners)",
+   "alt": "German pronunciation tip: 'ie' sounds like 'ee' and 'ei' sounds like 'eye', with example words",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p09",
+   "topic": "grammar",
+   "title": "German Past Tense: Haben or Sein? Perfekt Rules in 4 Steps",
+   "alt": "Four-step guide to the German past tense Perfekt with haben or sein and past participles",
+   "slides": 6,
+   "book": "a2"
+  },
+  {
+   "id": "p10",
+   "topic": "life",
+   "title": "At the Doctor in Germany: 6 Essential German Phrases (with English)",
+   "alt": "German phrases for a doctor's visit with English translations",
+   "slides": 8,
+   "book": "a1"
+  },
+  {
+   "id": "p11",
+   "topic": "grammar",
+   "title": "German Mistake: 'Ich bin kalt' vs 'Mir ist kalt' (Dative Explained)",
+   "alt": "Comparison of 'Ich bin kalt' (wrong) and 'Mir ist kalt' (right) with explanation",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p12",
+   "topic": "nurses",
+   "title": "German for Nurses: Morning Care Phrases (Grundpflege, Pflegedeutsch)",
+   "alt": "German phrases for morning patient care with English translations",
+   "slides": 8,
+   "book": "pflege-b1"
+  },
+  {
+   "id": "p13",
+   "topic": "a1",
+   "title": "German Numbers 1–100 and Telling Time: 4 Traps for Beginners",
+   "alt": "German numbers and time traps: einundzwanzig, halb drei = 2:30, Viertel nach and prices with commas",
+   "slides": 6,
+   "book": "a1"
+  },
+  {
+   "id": "p14",
+   "topic": "life",
+   "title": "Deutsche Bahn German: Understand Train Announcements (Verspätung, Gleis)",
+   "alt": "Deutsche Bahn train announcement words in German with English meanings",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p15",
+   "topic": "grammar",
+   "title": "5 Common German Mistakes English Speakers Make (and How to Fix Them)",
+   "alt": "Five common German mistakes with the wrong and correct versions",
+   "slides": 7,
+   "book": "a1"
+  },
+  {
+   "id": "p16",
+   "topic": "nurses",
+   "title": "German for Nurses: What Patients Say vs What They Mean (Pflegedeutsch)",
+   "alt": "Colloquial patient phrases in German and what they mean, for nurses",
+   "slides": 1,
+   "book": "pflege-b1"
+  },
+  {
+   "id": "p17",
+   "topic": "nurses",
+   "title": "Nursing Handover in German (Übergabe): 5-Line Structure for Nurses",
+   "alt": "Five-line structure for a German nursing shift handover (Übergabe) with example sentences",
+   "slides": 7,
+   "book": "pflege-b2"
+  },
+  {
+   "id": "p18",
+   "topic": "books",
+   "title": "Deutsch A1: German from Zero – German Book for Beginners (Self-Study)",
+   "alt": "Cover of the book Deutsch A1: German from Zero, a self-study German course for beginners",
+   "slides": 7,
+   "book": "a1"
+  },
+  {
+   "id": "p19",
+   "topic": "a1",
+   "title": "Du or Sie? Formal vs Informal 'You' in German (Simple Guide)",
+   "alt": "When to use du and Sie in German: a simple guide with examples",
+   "slides": 1,
+   "book": "a1"
+  },
+  {
+   "id": "p20",
+   "topic": "life",
+   "title": "Supermarket German: 6 Phrases for Shopping in Germany (Pfand, Kasse)",
+   "alt": "German supermarket phrases, including Pfand and paying by card, with English translations",
+   "slides": 8,
+   "book": "a1"
+  }
+ ],
+ "reels": [
+  {
+   "id": "r01",
+   "title": "8 German phrases for your first week in Germany",
+   "text": "Say each one out loud: Wie bitte?, Ich hätte gern …, Was kostet das? and more.",
+   "seconds": 29,
+   "book": "a1",
+   "date": "2026-11-07"
+  },
+  {
+   "id": "r02",
+   "title": "„halb drei“ is NOT 3:30 – it's 2:30",
+   "text": "Germans count towards the next hour. A quick trap for telling the time.",
+   "seconds": 17,
+   "book": "a1",
+   "date": "2026-11-17"
+  },
+  {
+   "id": "r03",
+   "title": "5 mistakes almost every English speaker makes in German",
+   "text": "Spot the wrong version, then learn the fix.",
+   "seconds": 20,
+   "book": "a1",
+   "date": "2026-11-21"
+  },
+  {
+   "id": "r04",
+   "title": "Nurses: 6 pain questions in German",
+   "text": "Wo tut es weh? and five more questions for your next shift.",
+   "seconds": 23,
+   "book": "pflege-b1",
+   "date": "2026-11-26"
+  }
+ ]
+}

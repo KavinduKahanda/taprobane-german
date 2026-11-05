@@ -31,11 +31,12 @@ TODAY = datetime.date.today().isoformat()
 DATA = json.loads((SRC / "data/books.json").read_text(encoding="utf-8"))
 SERIES, BOOKS = DATA["series"], DATA["books"]
 BY_ID = {b["id"]: b for b in BOOKS}
+LESSONS = json.loads((SRC / "data/lessons.json").read_text(encoding="utf-8"))
 PROMOS = json.loads((SRC / "data/promos.json").read_text(encoding="utf-8"))["promos"]
 esc = html.escape
 
 NAV = [("books", "./#books", "Books"), ("pflege", "pflege.html", "For nurses"),
-       ("level", "level-test.html", "Level test"), ("bonus", "bonus.html", "Free resources"),
+       ("level", "level-test.html", "Level test"), ("learn", "learn.html", "Free lessons"), ("bonus", "bonus.html", "Free resources"),
        ("about", "about.html", "About")]
 STORES = [("com", "Amazon.com"), ("de", "Amazon.de"), ("co.uk", "Amazon.co.uk"), ("in", "Amazon.in"),
           ("ca", "Amazon.ca"), ("com.au", "Amazon.com.au"), ("fr", "Amazon.fr"), ("it", "Amazon.it"),
@@ -185,11 +186,44 @@ def jsonld(meta, body):
         g = [org_ld(), series_ld("zero"), series_ld("pflege")] + [book_ld(b) for b in BOOKS]
     elif meta.get("ld") == "pflege":
         g = [org_ld(), series_ld("pflege")] + [book_ld(b) for b in BOOKS if b["series"] == "pflege"]
+    elif meta.get("ld") == "learn":
+        g = [org_ld()] + reels_ld()
     if g is not None:
         f = faq_ld(body)
         if f: g.append(f)
         return json.dumps({"@context": "https://schema.org", "@graph": g}, ensure_ascii=False)
     return meta.get("jsonld")
+
+
+# ---------- free lessons + reels (learn.html) ----------
+def lessons():
+    T = LESSONS["topics"]
+    chips = '<div class="lx-f" role="group" aria-label="Filter lessons"><button type="button" class="on" data-t="all">All</button>' + \
+        "".join(f'<button type="button" data-t="{k}">{esc(v)}</button>' for k, v in T.items()) + "</div>"
+    out = []
+    for p in LESSONS["posts"]:
+        b = BY_ID.get(p["book"]) if p.get("book") else None
+        slides = " ".join(f'media/learn/{p["id"]}-s{i:02d}.jpg' for i in range(1, p["slides"] + 1))
+        more = f'{p["slides"]} slides' if p["slides"] > 1 else "1 card"
+        out.append(f'<article class="lx" data-t="{p["topic"]}"><button type="button" class="lx-open" data-slides="{slides}" data-title="{esc(p["title"])}" data-book="{b["page"] if b else "./#books"}" data-bookt="{esc(b["short"] if b and b.get("short") else (b["level"] + " " + b["level_name"]) if b else "our books")}">'
+                   f'<img src="media/learn/{p["id"]}-pin.jpg" alt="{esc(p["alt"])}" width="600" height="900" loading="lazy" decoding="async">'
+                   f'<span class="lx-t"><small>{esc(T[p["topic"]])} · {more}</small><b>{esc(p["title"])}</b></span></button></article>')
+    return chips + '<div class="lxs">' + "".join(out) + "</div>"
+
+
+def reels():
+    out = []
+    for r in LESSONS["reels"]:
+        b = BY_ID.get(r["book"]) if r.get("book") else None
+        link = f'<a class="inline" href="{b["page"]}">From {esc(b["title"])} →</a>' if b else ""
+        out.append(f'<figure class="rl"><video src="media/learn/{r["id"]}.mp4" poster="media/learn/{r["id"]}.jpg" controls muted playsinline loop preload="none" width="540" height="960" aria-label="{esc(r["title"])}"></video>'
+                   f'<figcaption><b>{esc(r["title"])}</b><span>{esc(r["text"])}</span>{link}</figcaption></figure>')
+    return '<div class="rls">' + "".join(out) + "</div>"
+
+
+def reels_ld():
+    return [{"@type": "VideoObject", "name": r["title"], "description": r["text"], "thumbnailUrl": BASE + f'media/learn/{r["id"]}.jpg',
+             "contentUrl": BASE + f'media/learn/{r["id"]}.mp4', "uploadDate": TODAY, "duration": f'PT{r["seconds"]}S'} for r in LESSONS["reels"]]
 
 
 # ---------- shell ----------
@@ -215,7 +249,7 @@ def footer():
 <p>Questions or corrections? <a class="inline" href="mailto:{EMAIL}">{EMAIL}</a></p></div>
 <div><h2 class="fh">German from Zero</h2>{zero}</div>
 <div><h2 class="fh">German for Nurses</h2>{pfl}</div>
-<div><h2 class="fh">Help</h2><a href="level-test.html">Find your level</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="about.html">About the publisher</a><a href="legal.html">Legal &amp; privacy</a></div>
+<div><h2 class="fh">Help</h2><a href="level-test.html">Find your level</a><a href="learn.html">Free lessons &amp; reels</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="about.html">About the publisher</a><a href="legal.html">Legal &amp; privacy</a></div>
 </div><div class="legal">© <span id="year">2026</span> {PUB}. Independent publisher; not affiliated with telc gGmbH, the Goethe-Institut, ÖSD or any exam provider. Language learning only — no medical, legal or immigration advice. Amazon and Kindle are trademarks of Amazon.com, Inc.</div>
 </div></footer>
 <script src="assets/deals.js"></script><script src="assets/site.js" defer></script>'''
@@ -225,6 +259,7 @@ def tokens(body):
     body = re.sub(r"<!--@include ([\w-]+)-->", lambda m: (SRC / "partials" / f"{m.group(1)}.html").read_text(encoding="utf-8"), body)
     body = re.sub(r"<!--@cards (\w+)-->", lambda m: cards(m.group(1)), body)
     body = re.sub(r"<!--@rows (\w+)-->", lambda m: rows(m.group(1)), body)
+    body = body.replace("<!--@lessons-->", lessons()).replace("<!--@reels-->", reels())
     body = re.sub(r"<!--@buy ([\w-]+)-->", lambda m: buy(BY_ID[m.group(1)]), body)
     body = re.sub(r"<!--@path ([\w-]+)-->", lambda m: path(BY_ID[m.group(1)]), body)
     left = re.findall(r"<!--@[^>]*-->", body)
