@@ -24,8 +24,8 @@ SRC = ROOT / "_src"
 BASE = "https://kavindukahanda.github.io/taprobane-german/"
 # Inquiry form: paste the free form service's endpoint URL here (e.g. Formspree / Web3Forms).
 # While it is empty the contact page shows only the Instagram panel, no broken form.
-FORM_ENDPOINT = ""
-FORM_FIELDS = {}  # extra hidden fields a service may need, e.g. {"access_key": "..."}
+FORM_ENDPOINT = "https://api.web3forms.com/submit"
+FORM_FIELDS = {"access_key": "9dec6495-6247-4654-ae41-2cefd22fd3c8", "from_name": "German from Zero website"}
 INSTAGRAM = "https://www.instagram.com/deutschvonzero/"
 SITE = "German from Zero"
 PUB = "Taprobane Holdings"
@@ -235,7 +235,7 @@ def inquiry():
 <label>Your name <span class="opt">(optional)</span><input name="name" autocomplete="name" maxlength="80"></label>
 <label>Your e-mail <span class="opt">(so we can reply)</span><input name="email" type="email" autocomplete="email" required maxlength="120"></label>
 <label>Message<textarea name="message" rows="5" required maxlength="3000"></textarea></label>
-<input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+<input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
 <p class="note">We use your e-mail only to answer this message. See <a href="legal.html">privacy</a>.</p>
 <button class="btn navy" type="submit">Send inquiry</button><p class="form-status" role="status" aria-live="polite"></p></form></div>'''
 
