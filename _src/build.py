@@ -27,6 +27,7 @@ BASE = "https://kavindukahanda.github.io/taprobane-german/"
 FORM_ENDPOINT = "https://api.web3forms.com/submit"
 FORM_FIELDS = {"access_key": "9dec6495-6247-4654-ae41-2cefd22fd3c8", "from_name": "German from Zero website"}
 INSTAGRAM = "https://www.instagram.com/deutschvonzero/"
+ASSET_V = __import__("hashlib").md5((ROOT/"assets/style.css").read_bytes()+(ROOT/"assets/site.js").read_bytes()).hexdigest()[:8]
 FACEBOOK = "https://www.facebook.com/people/German-von-Zero/61596137257026/"
 SITE = "German from Zero"
 PUB = "Taprobane Holdings"
@@ -215,14 +216,14 @@ def footer():
     pfl = "".join(f'<a href="{b["page"]}">{b["level_name"]} · {b["short"]}</a>' for b in BOOKS if b["series"] == "pflege")
     return f'''<footer class="site-footer"><div class="wrap"><div class="cols">
 <div>{brand("by " + PUB)}<p>Clear, structured self-study German for English speakers — from your first word to B2, and the German you need on the ward.</p>
-<p><a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener">Follow @deutschvonzero on Instagram</a> or <a href="{FACEBOOK}" target="_blank" rel="noopener">Facebook</a> — a free German tip every few days.</p>
+<p><a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener">Follow @deutschvonzero on Instagram</a> or <a class="ig" href="{FACEBOOK}" target="_blank" rel="noopener">Facebook</a> — a free German tip every few days.</p>
 <p>Questions or corrections? <a class="inline" href="contact.html">Get in touch →</a></p></div>
 <div><h2 class="fh">German from Zero</h2>{zero}</div>
 <div><h2 class="fh">German for Nurses</h2>{pfl}</div>
 <div><h2 class="fh">Help</h2><a href="level-test.html">Find your level</a><a href="bonus.html">Free resources</a><a href="./#faq">FAQ</a><a href="about.html">About the publisher</a><a href="contact.html">Contact</a><a href="legal.html">Legal &amp; privacy</a></div>
 </div><div class="legal">© <span id="year">2026</span> {PUB}. Independent publisher; not affiliated with telc gGmbH, the Goethe-Institut, ÖSD or any exam provider. Language learning only — no medical, legal or immigration advice. Amazon and Kindle are trademarks of Amazon.com, Inc.</div>
 </div></footer>
-<script src="assets/deals.js"></script><script src="assets/site.js" defer></script>'''
+<script src="assets/deals.js"></script><script src="assets/site.js?v={ASSET_V}" defer></script>'''
 
 
 def inquiry():
@@ -268,7 +269,7 @@ def page(name, meta, body):
 <link rel="icon" href="{FAVICON}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">{ld}</head><body>
+<link rel="stylesheet" href="assets/style.css?v={ASSET_V}">{ld}</head><body>
 {header(meta.get("nav", ""))}
 <main id="main">{body}</main>
 {footer()}</body></html>
