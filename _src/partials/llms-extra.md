@@ -12,3 +12,4 @@
 
 ## Social
 - Instagram: https://www.instagram.com/deutschvonzero/ (free German tips)
+- Facebook: https://www.facebook.com/people/German-von-Zero/61596137257026/ (same free German tips)
