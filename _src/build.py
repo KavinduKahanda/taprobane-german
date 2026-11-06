@@ -27,6 +27,7 @@ BASE = "https://kavindukahanda.github.io/taprobane-german/"
 FORM_ENDPOINT = "https://api.web3forms.com/submit"
 FORM_FIELDS = {"access_key": "9dec6495-6247-4654-ae41-2cefd22fd3c8", "from_name": "German from Zero website"}
 INSTAGRAM = "https://www.instagram.com/deutschvonzero/"
+FACEBOOK = "https://www.facebook.com/people/German-von-Zero/61596137257026/"
 SITE = "German from Zero"
 PUB = "Taprobane Holdings"
 TODAY = datetime.date.today().isoformat()
@@ -162,7 +163,7 @@ def book_ld(b):
 
 def org_ld():
     return {"@type": "Organization", "@id": BASE + "#publisher", "name": PUB, "url": BASE,
-            "brand": SITE, "sameAs": [INSTAGRAM]}
+            "brand": SITE, "sameAs": [INSTAGRAM, FACEBOOK]}
 
 
 def series_ld(key):
@@ -214,7 +215,7 @@ def footer():
     pfl = "".join(f'<a href="{b["page"]}">{b["level_name"]} · {b["short"]}</a>' for b in BOOKS if b["series"] == "pflege")
     return f'''<footer class="site-footer"><div class="wrap"><div class="cols">
 <div>{brand("by " + PUB)}<p>Clear, structured self-study German for English speakers — from your first word to B2, and the German you need on the ward.</p>
-<p><a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener">Follow @deutschvonzero on Instagram</a> — a free German tip every few days.</p>
+<p><a class="ig" href="{INSTAGRAM}" target="_blank" rel="noopener">Follow @deutschvonzero on Instagram</a> or <a href="{FACEBOOK}" target="_blank" rel="noopener">Facebook</a> — a free German tip every few days.</p>
 <p>Questions or corrections? <a class="inline" href="contact.html">Get in touch →</a></p></div>
 <div><h2 class="fh">German from Zero</h2>{zero}</div>
 <div><h2 class="fh">German for Nurses</h2>{pfl}</div>
