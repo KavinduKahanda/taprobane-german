@@ -207,4 +207,5 @@ summary:after{content:"+";color:var(--gold);font-size:1.3rem;line-height:1}detai
 .ig-avatar .logo{width:48px;height:32px}
 .ig-handle{display:block;color:#fff;font-size:1.15rem}.ig-name{font-size:.88rem;color:#c9c3dd}
 .ig-btn{background:linear-gradient(100deg,#833ab4,#fd1d1d 60%,#fcb045);color:#fff;display:inline-flex;align-items:center;gap:9px;box-shadow:0 12px 26px -12px rgba(253,29,29,.7)}
+.social-col{display:grid;gap:28px}.fb-panel{background:linear-gradient(160deg,#0b2a5c 0%,#0d2440 55%,#081a2e 100%)}.fb-panel:before{background:radial-gradient(circle,rgba(24,119,242,.45),rgba(24,119,242,.15) 45%,transparent 70%)}.fb-panel:after{background:linear-gradient(90deg,#0866ff,#4b9bff)}.fb-ring{background:conic-gradient(from 200deg,#0866ff,#4b9bff,#0866ff)}.fb-btn{background:linear-gradient(100deg,#0866ff,#1877f2 60%,#4b9bff);box-shadow:0 12px 26px -12px rgba(24,119,242,.7)}
 .ig-btn:hover{color:#fff;filter:brightness(1.08)}.ig-btn svg{width:19px;height:19px}
